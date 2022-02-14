@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Table from '@mui/material/Table';
@@ -8,6 +8,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import axios from 'axios';
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
@@ -21,30 +22,44 @@ const rows = [
   createData('Gingerbread', 356, 16.0, 49, 3.9),
 ];
 
+// function getPlayers() {
+//   axios.get(`https://localhost/api/players`).then(players => {
+//
+//   })
+// }
+
 export default function Home() {
+  const [players, setPlayers] = useState([]);
+
+  useEffect(() => {
+    axios.get(`https://localhost/api/players`).then(res => {
+      setPlayers(res.data);
+      console.log(players);
+    })
+  }, [])
+
   return (
     <Container maxWidth={"xl"}>
       <Typography variant="h1"
-                  component="h1"
+                  component="h2"
                   align="center"
                   gutterBottom={true}
+                  className="title"
       >
         Światowy ranking gry w paczkę
       </Typography>
 
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} className="table">
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>Gracz</TableCell>
               <TableCell align="right">Punkty</TableCell>
               <TableCell align="right">Zwycięstwa</TableCell>
-              <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-              <TableCell align="right">Protein&nbsp;(g)</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {players.map((row) => (
               <TableRow
                 key={row.name}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -52,10 +67,8 @@ export default function Home() {
                 <TableCell component="th" scope="row">
                   {row.name}
                 </TableCell>
-                <TableCell align="right">{row.calories}</TableCell>
-                <TableCell align="right">{row.fat}</TableCell>
-                <TableCell align="right">{row.carbs}</TableCell>
-                <TableCell align="right">{row.protein}</TableCell>
+                <TableCell align="right">{row.points}</TableCell>
+                <TableCell align="right">{row.wins}</TableCell>
               </TableRow>
             ))}
           </TableBody>
