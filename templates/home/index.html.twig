@@ -3,12 +3,28 @@
 {% block title %}Gra w Paczkę{% endblock %}
 
 {% block body %}
+    <div class="container-md">
+        <h1 class="display-3 text-center p-5">Światowy ranking gry w paczkę</h1>
 
-    <h1>Members</h1>
-    <ul>
-        {% for player in players %}
-            <li>{{ player.name }}</li>
-        {% endfor %}
-    </ul>
-
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Gracz</th>
+                <th scope="col">Punkty</th>
+                <th scope="col">Zwycięstwa</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for player in players %}
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>{{ player.name }}</td>
+                    <td>{{ player.points }}</td>
+                    <td>{{ player.wins }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
