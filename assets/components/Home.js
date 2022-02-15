@@ -26,7 +26,7 @@ export default function Home() {
   const [players, setPlayers] = useState([]);
 
   useEffect(() => {
-    axios.get(`https://${process.env.SERVER_NAME}/api/players`).then(res => {
+    axios.get(`https://localhost/api/players`).then(res => {
       setPlayers(res.data);
     })
   }, [])
