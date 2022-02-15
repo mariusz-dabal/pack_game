@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gra w Paczkę{% endblock %}
+
+{% block body %}
+
+    <h1>Members</h1>
+    <ul>
+        {% for player in players %}
+            <li>{{ player.name }}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
