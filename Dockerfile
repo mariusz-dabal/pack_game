@@ -18,8 +18,6 @@ RUN apk add --no-cache \
 		gettext \
 		git \
 		gnu-libiconv \
-    	nodejs \
-    	yarn \
 	;
 
 # install gnu-libiconv and set LD_PRELOAD env to make iconv work fully on Alpine image.
