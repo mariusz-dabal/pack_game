@@ -110,9 +110,6 @@ RUN apk add --no-cache --virtual .pgsql-deps postgresql-dev; \
 
 COPY . .
 
-RUN yarn install \
-    yarn encore production
-
 RUN set -eux; \
 	mkdir -p var/cache var/log; \
 	composer install --prefer-dist --no-dev --no-progress --no-scripts --no-interaction; \
