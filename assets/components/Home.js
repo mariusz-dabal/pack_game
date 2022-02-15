@@ -22,19 +22,12 @@ const rows = [
   createData('Gingerbread', 356, 16.0, 49, 3.9),
 ];
 
-// function getPlayers() {
-//   axios.get(`https://localhost/api/players`).then(players => {
-//
-//   })
-// }
-
 export default function Home() {
   const [players, setPlayers] = useState([]);
 
   useEffect(() => {
-    axios.get(`https://localhost/api/players`).then(res => {
+    axios.get(`https://${process.env.SERVER_NAME}/api/players`).then(res => {
       setPlayers(res.data);
-      console.log(players);
     })
   }, [])
 
