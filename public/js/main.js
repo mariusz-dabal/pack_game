@@ -1,5 +1,4 @@
-document.querySelector('#menuButton')
-  .addEventListener('click', () => {
+document.querySelector('#menuButton').addEventListener('click', () => {
     const devider = document.querySelector('.dropdown-divider');
 
     if (devider.classList.contains('show')) {
@@ -8,4 +7,7 @@ document.querySelector('#menuButton')
       devider.classList.add('show')
     }
 });
+
+
+
 

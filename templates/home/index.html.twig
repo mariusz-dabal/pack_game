@@ -3,7 +3,7 @@
 {% block title %}Gra w Paczkę{% endblock %}
 
 {% block body %}
-    <div class="container-fluid p-0">
+    <div class="container-fluid p-0 test" id="id">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid flex-lg-column">
@@ -18,7 +18,7 @@
                             <a class="nav-link active" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Features</a>
+                            <a class="nav-link" href="{{ path('manual') }}">Instrukcja</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Pricing</a>
@@ -31,7 +31,7 @@
             </div>
         </nav>
 
-        <div class="container-lg">
+        <div class="container-lg ">
             <h1 class="display-3 text-center p-5">Światowy ranking gry w paczkę</h1>
 
             <table class="table">
