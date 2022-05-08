@@ -9,8 +9,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class SiteController extends AbstractController
 {
     #[Route('/manual', name: 'manual')]
-    public function index(): Response
+    public function showManual(): Response
     {
         return $this->render('sites/manual.html.twig');
+    }
+
+    #[Route('/gallery', name: 'gallery')]
+    public function showGallery(): Response
+    {
+        return $this->render('sites/gallery.html.twig');
     }
 }
