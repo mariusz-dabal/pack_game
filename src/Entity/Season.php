@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\PlayerRepository;
+use App\Repository\SeasonRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: PlayerRepository::class)]
-class Player
+#[ORM\Entity(repositoryClass: SeasonRepository::class)]
+class Season
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -18,7 +18,10 @@ class Player
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
 
-    #[ORM\OneToMany(mappedBy: 'player', targetEntity: Score::class, orphanRemoval: true)]
+    #[ORM\Column(type: 'datetime_immutable')]
+    private $createdAt;
+
+    #[ORM\OneToMany(mappedBy: 'season', targetEntity: Score::class, orphanRemoval: true)]
     private $scores;
 
     public function __construct()
@@ -43,6 +46,18 @@ class Player
         return $this;
     }
 
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
     /**
      * @return Collection|Score[]
      */
@@ -55,7 +70,7 @@ class Player
     {
         if (!$this->scores->contains($score)) {
             $this->scores[] = $score;
-            $score->setPlayer($this);
+            $score->setSeason($this);
         }
 
         return $this;
@@ -65,8 +80,8 @@ class Player
     {
         if ($this->scores->removeElement($score)) {
             // set the owning side to null (unless already changed)
-            if ($score->getPlayer() === $this) {
-                $score->setPlayer(null);
+            if ($score->getSeason() === $this) {
+                $score->setSeason(null);
             }
         }
 
