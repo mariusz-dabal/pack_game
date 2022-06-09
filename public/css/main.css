@@ -18,6 +18,13 @@ button {
     display: block;
 }
 
+.margin {
+    display: block;
+    margin-left: 70px;
+    margin-right: auto;
+    width: 50%;
+  }
+
 @media only screen and (min-width: 992px) {
     .dropdown-divider {
         display: block;
