@@ -13,10 +13,4 @@ class SiteController extends AbstractController
     {
         return $this->render('sites/manual.html.twig');
     }
-
-    #[Route('/gallery', name: 'gallery')]
-    public function showGallery(): Response
-    {
-        return $this->render('sites/gallery.html.twig');
-    }
 }
