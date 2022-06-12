@@ -1,0 +1,40 @@
+.logo, .logo:hover {
+    font-family: 'Exo', sans-serif;
+    font-size: 2rem;
+    text-transform: uppercase;
+    color: #005391;
+    text-decoration: none;
+}
+
+button {
+    border: solid red 2px;
+}
+
+.dropdown-divider {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.margin {
+    display: block;
+    margin-left: 70px;
+    margin-right: auto;
+    width: 50%;
+  }
+
+@media only screen and (min-width: 992px) {
+    .dropdown-divider {
+        display: block;
+    }
+    /*.navbar-toggler,*/
+    /*.navbar-toggler:focus,*/
+    /*.navbar-toggler:focus-visible {*/
+    /*    border: none;*/
+    /*    outline: none;*/
+    /*    box-shadow: none;*/
+    /*}*/
+}
+
