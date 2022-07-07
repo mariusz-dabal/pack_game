@@ -19,7 +19,7 @@ class Player
     private $name;
 
     #[ORM\OneToMany(mappedBy: 'player', targetEntity: Score::class, orphanRemoval: true)]
-    private $scores;
+    private Collection $scores;
 
     public function __construct()
     {

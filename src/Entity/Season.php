@@ -13,16 +13,16 @@ class Season
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $name;
+    private string $name;
 
     #[ORM\Column(type: 'datetime_immutable')]
-    private $createdAt;
+    private \DateTimeImmutable $createdAt;
 
     #[ORM\OneToMany(mappedBy: 'season', targetEntity: Score::class, orphanRemoval: true)]
-    private $scores;
+    private Collection $scores;
 
     public function __construct()
     {

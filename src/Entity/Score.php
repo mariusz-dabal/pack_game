@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ScoreRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ScoreRepository::class)]
 class Score
@@ -11,18 +12,21 @@ class Score
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\ManyToOne(targetEntity: Player::class, inversedBy: 'scores')]
     #[ORM\JoinColumn(nullable: false)]
-    private $player;
+    #[Assert\NotBlank]
+    private Player $player;
 
     #[ORM\Column(type: 'integer')]
-    private $points;
+    #[Assert\NotBlank]
+    private int $points;
 
     #[ORM\ManyToOne(targetEntity: Season::class, inversedBy: 'scores')]
     #[ORM\JoinColumn(nullable: false)]
-    private $season;
+    #[Assert\NotBlank]
+    private Season $season;
 
     public function getId(): ?int
     {
