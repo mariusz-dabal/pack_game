@@ -8,3 +8,15 @@ document.querySelector('#menuButton').addEventListener('click', () => {
     }
 });
 
+const url = location.href.split("/");
+const navLinks = document.querySelectorAll(".nav-link");
+const currentPage = url.pop();
+
+navLinks.forEach(function(navLink){
+  let currentLink = navLink.href.split('/').pop()
+
+  if(currentLink === currentPage){
+    navLink.classList.add("active")
+  }
+})
+
