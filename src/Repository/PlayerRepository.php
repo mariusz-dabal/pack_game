@@ -20,7 +20,7 @@ class PlayerRepository extends ServiceEntityRepository
 
     public function findAll(): array
     {
-        return $this->findBy([], array('points' => 'DESC'));
+        return [];
     }
 
     // /**
