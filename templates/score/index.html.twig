@@ -9,12 +9,15 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Wyniki</h1>
 
-    This friendly message is coming from:
     <ul>
-        <li>Your controller at <code><a href="{{ '/srv/app/src/Controller/ScoreController.php'|file_link(0) }}">src/Controller/ScoreController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/srv/app/templates/score/index.html.twig'|file_link(0) }}">templates/score/index.html.twig</a></code></li>
+        {% for score in scores %}
+            <li>{{ score.player.name }}</li>
+            <li>{{ score.season.name }}</li>
+        {% endfor %}
     </ul>
+
+
 </div>
 {% endblock %}
