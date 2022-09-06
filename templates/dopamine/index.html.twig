@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DopamineController!{% endblock %}
+
+{% block body %}
+
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-info" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+
+<div class="container-md">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Start</th>
+            <th scope="col">End</th>
+            <th scope="col">Password</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for password in passwords %}
+            <tr>
+                <th scope="row">{{ loop.index }}</th>
+                <td>{{ password.start|date }}</td>
+                <td>{{ password.finish|date }}</td>
+                {% if date(password.finish) <= date()%}
+                    <td>{{ password.password }}</td>
+                {% else %}
+                    <td>*****</td>
+                {% endif %}
+
+                <td>
+                    <form action="/dopamine/{{ password.id }}" METHOD="POST">
+                        <button type="submit" class="btn btn-danger">X</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {{ form(form) }}
+</div>
+
+{% endblock %}
